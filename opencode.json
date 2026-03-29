@@ -1,0 +1,29 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "lms-local": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio (local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:1234/v1"
+      },
+      "models": {
+        "qwen3.5-35b-a3b": { "name": "Qwen3.5 35B" },
+        "qwen/qwen3.5-35b-a3b": { "name": "Qwen3.5 35B GGUF Q4_K_M" },
+        "qwen3.5-35b-a3b-mlx-5": { "name": "Qwen3.5 35B 5-bit MLX" },
+        "qwen3.5-9b": { "name": "Qwen3.5 9B" },
+        "qwen3.5-0.8b-mlx": { "name": "Qwen3.5 0.8B MLX" },
+        "qwen3.5-27b-claude-4.6-opus-distilled-mlx": { "name": "Qwen3.5 27B Opus Distilled" },
+        "mlx-qwen3.5-4b-claude-4.6-opus-reasoning-distilled-v2": { "name": "Qwen3.5 4B Opus Reasoning v2 bf16" },
+        "mlx-qwen3.5-4b-claude-4.6-opus-reasoning-distilled-v2@8bit": { "name": "Qwen3.5 4B Opus Reasoning v2 8bit" },
+        "qwen3.5-4b-mlx": { "name": "Qwen3.5 4B 8bit" },
+        "mlx-qwen3.5-0.8b-claude-4.6-opus-reasoning-distilled": { "name": "Qwen3.5 0.8B Opus Reasoning" },
+        "zai-org/glm-4.7-flash": { "name": "GLM 4.7 Flash" },
+        "openai/gpt-oss-20b": { "name": "GPT-OSS 20B" },
+        "liquid/lfm2-24b-a2b": { "name": "LFM2 24B" },
+        "liquid/lfm2.5-1.2b": { "name": "LFM2.5 1.2B" },
+        "mistralai/devstral-small-2-2512": { "name": "Devstral Small" }
+      }
+    }
+  }
+}
