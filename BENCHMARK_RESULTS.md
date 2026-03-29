@@ -1,10 +1,11 @@
 # MacBook Air Local LLM Agentic Coding Benchmark
 
-> Testing local LLMs on a MacBook Air M3 (32GB RAM) for real-world agentic coding tasks using [Pi](https://github.com/badlogic/pi-mono) and [OpenCode](https://opencode.ai) as coding agents, with [LM Studio](https://lmstudio.ai) as the local inference backend.
+> Testing local LLMs on a MacBook Air M5 (32GB RAM) for real-world agentic coding tasks using [Pi](https://github.com/badlogic/pi-mono) and [OpenCode](https://opencode.ai) as coding agents, with [LM Studio](https://lmstudio.ai) as the local inference backend.
 
 ## Setup
 
-- **Hardware:** MacBook Air M3, 32GB RAM
+- **Hardware:** MacBook Air (Mac17,3), Apple M5 chip, 32GB unified memory
+- **OS:** macOS Darwin 25.3.0
 - **Inference:** LM Studio (MLX backend), all models loaded at 128k context
 - **Agents:** Pi CLI v0.63.1, OpenCode v1.3.3
 - **Date:** 2026-03-29
@@ -14,13 +15,10 @@
 A multi-step agentic coding task that tests tool orchestration, code generation, execution, and report writing:
 
 1. **Read** a CSV sales dataset (24 rows, 6 columns: date, region, product, units_sold, revenue, cost)
-2. **Create** a Python script using pandas + matplotlib that generates:
-   - A bar chart of total revenue by region
-   - A pie chart of units sold by product
-3. **Run** the script with python3
-4. **Write** a markdown report summarizing: total revenue, profit, margin %, top region, top product, monthly trends
+2. **Create and run** a Python script using pandas + matplotlib that generates a bar chart of total revenue by region and a pie chart of units sold by product
+3. **Write** a markdown report summarizing: total revenue, profit, margin %, top region, top product, monthly trends
 
-**Scoring:** 1 point per completed step (script created, charts generated, report written). Max 3/3.
+**Scoring:** 3 steps — script created (1pt), charts generated via execution (1pt), report written (1pt). Max 3/3.
 
 ## TPS Results (Tokens Per Second)
 
@@ -101,7 +99,7 @@ High TPS does not equal fast task completion:
 
 | Model | Reason |
 |-------|--------|
-| qwen3.5-27b-claude-opus-distilled | Dense 27B, only 5 tps — took 22 min on pi |
+| qwen3.5-27b-claude-4.6-opus-distilled-mlx | Dense 27B — took 22 min on pi due to low tps |
 | qwen3.5-9b | Dense 9B at 8bit, only 14.4 tps |
 | qwen3.5-4b-opus-reasoning-v2 | bf16, only 13 tps |
 | zai-org/glm-4.7-flash | 30B MoE but only 14.6 tps |
@@ -109,7 +107,7 @@ High TPS does not equal fast task completion:
 
 ## Recommendations
 
-For **agentic coding on a MacBook Air M3 32GB**:
+For **agentic coding on a MacBook Air M5 32GB**:
 
 1. **Best quality:** `openai/gpt-oss-20b` — works on both agents, fast completions
 2. **Best speed/quality trade-off:** `qwen3.5-35b-a3b` (4-bit MoE) on OpenCode — 47 tps, reliable
